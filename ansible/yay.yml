@@ -1,0 +1,23 @@
+
+
+- name: Clone yay repo
+  become: yes
+  become_user: vagrant
+  git:
+    repo: 'https://aur.archlinux.org/yay.git'
+    dest: /tmp/yay
+
+- name: Build yay
+  become: yes
+  become_user: vagrant
+  command:  makepkg -s
+  args:
+    chdir: /tmp/yay
+
+- name: Install yay
+  become: yes
+  become_user: root
+  shell:  "/usr/sbin/pacman --noconfirm -U yay*.pkg.tar.xz"
+  args:
+    chdir: /tmp/yay
+

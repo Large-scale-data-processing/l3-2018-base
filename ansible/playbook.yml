@@ -1,0 +1,7 @@
+---
+- hosts: all
+  gather_facts: no
+  tasks:
+    - import_tasks: prepare.yml
+    - import_tasks: yay.yml
+    - import_tasks: apps.yml

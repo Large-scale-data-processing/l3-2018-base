@@ -1,0 +1,25 @@
+- name: Install JDK8
+  become: yes
+  become_user: vagrant
+  command: yay --noconfirm --answeredit none -S jdk8 --noconfirm
+
+
+- name: Default java
+  become: yes
+  become_user: root
+  command: archlinux-java set java-8-jdk
+
+- name: Install spark
+  become: yes
+  become_user: vagrant
+  command: yay --noconfirm --answeredit none -S apache-spark
+- name: Install activator
+  become: yes
+  become_user: vagrant
+  command: yay --noconfirm --answeredit none -S lightbend-activator
+  
+- name: Install sbt
+  become: yes
+  become_user: vagrant
+  command: yay --noconfirm --answeredit none -S sbt
+
