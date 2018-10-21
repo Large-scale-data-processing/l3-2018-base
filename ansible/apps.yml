@@ -9,17 +9,29 @@
   become_user: root
   command: archlinux-java set java-8-jdk
 
-- name: Install spark
+- name: Download and unarchive spark
   become: yes
-  become_user: vagrant
-  command: yay --noconfirm --answeredit none -S apache-spark
-- name: Install activator
+  become_user: root
+  unarchive:
+    src: http://ftp.man.poznan.pl/apache/spark/spark-2.3.2/spark-2.3.2-bin-hadoop2.7.tgz
+    dest: /opt
+    remote_src: yes
+
+- name: Link spark
   become: yes
-  become_user: vagrant
-  command: yay --noconfirm --answeredit none -S lightbend-activator
-  
-- name: Install sbt
+  become_user: root
+  file:
+    src: /opt/spark-2.3.2-bin-hadoop2.7
+    dest: /opt/apache-spark
+    state: link
+
+- name: "Alias spark-submit"
   become: yes
-  become_user: vagrant
-  command: yay --noconfirm --answeredit none -S sbt
+  become_user: root
+  raw: "echo 'alias spark-submit=\"/opt/apache-spark/bin/spark-submit\"' > /etc/profile.d/spark.sh"
+
+- name: "Alias spark-shell"
+  become: yes
+  become_user: root
+  raw: "echo 'alias spark-shell=\"/opt/apache-spark/bin/spark-shell\"' >> /etc/profile.d/spark.sh"
 

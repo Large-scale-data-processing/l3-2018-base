@@ -7,7 +7,10 @@ scalaVersion := "2.11.8"
 javacOptions ++= Seq("-source", "1.8", "-target", "1.8")
 
 libraryDependencies ++= Seq(
-  "org.apache.spark" %% "spark-core" % "2.3.2" % "provided",
+  "org.apache.spark" %% "spark-core" % "2.3.2" % "provided", // All spark deps deeds to be provided when we are using spark-submit
   "org.apache.spark" %% "spark-sql" % "2.3.2" % "provided",
   "org.apache.spark" %% "spark-mllib" % "2.3.2" % "provided"
 )
+
+assemblyOption in assembly := (assemblyOption in assembly).value.copy(cacheUnzip = false)
+assemblyOption in assembly := (assemblyOption in assembly).value.copy(cacheOutput = false)

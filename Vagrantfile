@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
   config.vm.network :private_network, ip: "10.0.0.2"
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8081, host: 8081
+  config.vm.network "forwarded_port", guest: 4040, host: 4040
   
   config.vm.synced_folder "project/", "/project", mount_options: ["dmode=777,fmode=777"] #who cares
   

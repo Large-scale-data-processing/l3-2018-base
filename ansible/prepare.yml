@@ -23,7 +23,7 @@
   become: yes
   become_user: root
   pacman:
-    name: base-devel, git, python, go
+    name: base-devel, git, python, go, unzip, wget
 
 
 - name: Reboot 
