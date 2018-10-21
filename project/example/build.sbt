@@ -11,6 +11,3 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % "2.3.2" % "provided",
   "org.apache.spark" %% "spark-mllib" % "2.3.2" % "provided"
 )
-
-assemblyOption in assembly := (assemblyOption in assembly).value.copy(cacheUnzip = false)
-assemblyOption in assembly := (assemblyOption in assembly).value.copy(cacheOutput = false)

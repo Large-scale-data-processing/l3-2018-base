@@ -20,7 +20,7 @@ def main(args: Array[String]): Unit ={
 
   val normalDataSet = normalRDD(spark.sparkContext, 10000000).toDS()
 
-  log.info(s"${normalDataSet.summary()}")
+  log.info(s"${normalDataSet.summary().rdd.map(r => (r(0), r(1))).collect().toMap}")
 
 
   val counts1: RDD[(Int, Long)] =

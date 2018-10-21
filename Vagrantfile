@@ -11,7 +11,11 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 8080, host: 8080
   config.vm.network "forwarded_port", guest: 8081, host: 8081
   config.vm.network "forwarded_port", guest: 4040, host: 4040
-  
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 2048
+    v.cpus = 2
+  end
+  config.vm.synced_folder ".", "/vagrant", disabled: true
   config.vm.synced_folder "project/", "/project", mount_options: ["dmode=777,fmode=777"] #who cares
   
 
