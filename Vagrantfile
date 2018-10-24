@@ -32,5 +32,6 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "yay-build", type: "shell", path: "shell/build_yay.sh", privileged: false
   # config.vm.provision "yay-install", type: "shell", path: "shell/install_yay.sh"
   # config.vm.provision "install-apps", type: "shell", path: "shell/install_apps.sh"
+  # config.vm.provision :reload
 
 end
